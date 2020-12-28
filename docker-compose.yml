@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  writer:
+    build: writer/
+    command: python -m test
+    volumes:
+      - ./volume:/home/user/HW2_Docker/volume
+
+  reader:
+    build: reader/
+    command: python -m test 
+    volumes:
+      - ./volume:/home/user/HW2_Docker/volume
+    depends_on:
+      - writer
+
+volumes:
+  volume:
